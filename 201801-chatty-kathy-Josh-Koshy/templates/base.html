@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		 <title>{% block title %}Chatty Kathy{% endblock %}</title>
+		<link rel='stylesheet' type='text/css' href="{{ url_for('static',filename='styles/style.css') }}">
+	</head>
+	
+	<body>
+		{% if title != 'Register' and title != 'Login' %}
+		<div>
+			<b style="font-size: 25px;">Chatty Kathy:</b>
+			<a style="font-size: 20px; margin: 10px;" href="/login">Home</a> 
+			<a style="font-size: 20px; margin: 10px;" href="/logout">Logout</a>
+		</div>
+		{% endif %}
+
+        {% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<div class=flashes>
+			{% for message in messages %}
+				<p>{{ message }}</p>
+			{% endfor %}
+				</div>
+  			{% endif %}
+		{% endwith %}
+
+		{% block content %}{% endblock %}
+
+
+
+	</body>
+</html>

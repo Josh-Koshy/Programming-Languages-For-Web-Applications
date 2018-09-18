@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html id="theHTML">
+	<head>
+		<div>
+			<b style="font-size: 25px;">Chatty Cathy:</b>
+			<a style="font-size: 20px; margin: 10px;" href="/login">Home</a> 
+			<a style="font-size: 20px; margin: 10px;" href="/logout">Logout</a>
+		</div>
+		
+	</head>
+	
+	<body>
+		<script type="text/javascript" src="/static/script.js"></script>
+
+		<textarea id="theDisplay" rows="10" cols="100" placeholder="{{ chat_id }}" readonly>-----Welcome!-----</textarea>
+		<form name="theForm" id="theForm">
+			<input type="text" id="newMsg" maxlength="1024" onkeypress="handle(event)" style="width: 550px;" name="" value="" />
+			<input type="button" id="theButton" value="Chat" />
+		</form>
+
+        <br />
+        <br />
+
+        <form action="" method="post">
+            <dl>
+                <input type="submit" id = "leaveButton" value = "Leave Chatroom"/>
+            </dl>
+        </form>
+
+		<br />
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<div class=flashes>
+			{% for message in messages %}
+				<p style="margin: 30px;">{{ message }}</p>
+			{% endfor %}
+				</div>
+			{% endif %}
+		{% endwith %}
+
+	</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - {{ super() }}{% endblock %}
+{% block content %}
+    <h2>So You Think We Can Cater?</h2>
+    <h3>Log in</h3>
+
+    {% if error %}<div class="error">Error: {{ error }}</div>{% endif %}
+   
+    <form action="" method="post">
+        <dl>
+            <dt>Username: <input type="text" name="user" />
+            </dt>
+            <dt>Password: <input type="password" name="password" />
+            </dt>
+        </dl>
+        <div><input type="submit" value="Log In" /></div>
+    </form>
+    <form action="/register">
+        <input type="submit" value="Register" />
+    </form>
+    <br />
+    
+
+{% endblock %}

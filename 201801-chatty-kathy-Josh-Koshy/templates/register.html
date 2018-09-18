@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Register - {{ super() }}{% endblock %}
+{% block content %}
+    <h2>Register New User:</h2>
+
+    {% if error %}<div class="error"><strong>Error:</strong> {{ error }}</div>
+    {% endif %}
+
+    <form action="" method="post">
+        <dl>
+            <dt>Username:
+                <dd><input type="text" name="username" value="{{ request.form.username }}"> </dd>
+            </dt>
+            <dt>Name:
+                <dd><input type="text" name="name" value="{{ request.form.name }}"></dd>
+            </dt>
+            <dt>Password:
+                <dd><input type="password" name="password"></dd>
+            </dt>
+            <dt>Password <small>(repeat)</small>:
+                <dd><input type="password" name="password2"></dd>
+            </dt>
+        </dl>
+        <div><input type="submit" value="Sign Up"></div>
+    </form>
+{% endblock %}

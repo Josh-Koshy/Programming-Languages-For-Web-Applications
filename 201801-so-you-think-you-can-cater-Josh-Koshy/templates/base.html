@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>{% block title %}The Caterers{% endblock %}</title>
+        <link rel='stylesheet' type='text/css' href="{{ url_for('static',filename='styles/style.css') }}">
+    </head>
+    
+    <body>
+        {% if title != 'Login' %}
+        <div>
+            <b style="font-size: 25px;">The Caterers:</b>
+            <a style="font-size: 20px; margin: 10px;" href="/login">Home</a> 
+            {% if level == '1' %}
+                <a style="font-size: 20px; margin: 10px;" href="/register">Register New Employee</a>
+            {% endif %}
+            {% if level %}
+                <a style="font-size: 20px; margin: 10px;" href="/logout">Logout</a>
+            {% endif %}
+        </div>
+        {% endif %} 
+        {% block content %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ title }} - Budgeter</title>
+		<link rel='stylesheet' type='text/css' href="{{ url_for('static',filename='styles.css') }}">
+	</head>
+	
+	<body>
+		<h1>Budget Manager</h1>
+
+		{% if error %}
+			<div class="error"><strong>Error:</strong> {{ error }}</div>
+		{% endif %}
+
+		<table>
+			<tr>
+				<th class=""><h2>Categories</h2></th>
+				<th class=""><h2 id="catTitle">All Purchases</h2></th>
+			</tr>
+			<tr>
+				<td class="budCol">
+					<dd id="selectDate">
+						Month: <select id="month"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select>Year: <select id="year"><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2025">2025</option></select>
+					</dd>
+
+					<div id="purDisp"></div>
+
+					<div>
+						<form action="" method="">
+							<dl>
+								<dt><b>Add New Purchase:</b>
+									<dd>Description: <input id="descPur" onkeypress="handle(event, 3)" type="text" name="desc" value="Description" /></dd>
+									<dd class="dAmount">Amount: <input id="valuePur" onkeypress="handle(event, 3)" type="number" name="value" value="0.0" /></dd>
+									<dd> Category:
+										<select id="catPur" onkeypress="handle(event, 3)"></select>
+									</dd>
+									<dd class="dDate">Date: <input id="datePur" onkeypress="handle(event, 3)" type="date" name="date" min="2017-01-01" value="2017-11-01" /></dd>
+									<dd><input id="purBut" type="button" name="purBut" value="Add" /></dd>
+								</dt>
+							</dl>
+						</form>
+					</div>
+
+					<div>
+						<form action="" method="">
+							<dl>
+								<dt><b>Modify Puchase:</b>
+									<dd>Purchase: <select id="modPur" onkeypress="handle(event, 4)"></select></dd>
+									<dd class="dAmount">Amount: <input type="number" onkeypress="handle(event, 4)" id="modAmnt" name="value" value="0.0" /></dd>
+									<dd>Category:
+										<select id="modCatPur" onkeypress="handle(event, 4)"></select>
+									</dd>
+									<dd class="dDate">Date: <input id="modDate" onkeypress="handle(event, 4)" type="date" name="date" min="2017-01-01" value="2017-11-01" /></dd>
+									<dd><input id="modPurBut" type="button" name="modPurBut" value="Modify" /></dd>
+								</dt>
+							</dl>
+						</form>
+					</div>
+
+					<div>
+						<b>Delete Purchase:</b>
+						<div>
+							<select id="delPur" onkeypress="handle(event, 5)"></select><input id="delPurBut" type="button" name="delPurBut" value="Delete" />
+						</div>
+					</div>
+				</td>
+                <td class="catCol">
+					<div>
+						<h3>Select Category: </h3>
+						<ul id="catDisp"></ul>
+					</div>
+
+
+					<div>
+						<form action="" method="post">
+							<dl>
+								<dt><b>Add Category:</b>
+									<dd>Name: <input id="newCat" type="text" onkeypress="handle(event, 0)" name="newCat" value="Name" /></dd>
+									<dd>Budget: <input type="number" id="newBud" onkeypress="handle(event, 0)" name="value" value="0.0" /></dd>
+									<dd id="dCatBut"><input id="catBut" type="button" name="catBut" value="Add" /></dd>
+
+								</dt>
+							</dl>
+						</form>
+					</div>
+
+					<div>
+						<form action="" method="">
+							<dl>
+								<dt><b>Modify Category:</b>
+									<dd>Category: <select id="modCat" onkeypress="handle(event, 1)"></select></dd>
+									<dd>Budget: <input type="number" id="modBud" onkeypress="handle(event, 1)" name="value" value="0.0" /><input id="modCatBut" type="button" name="modCatBut" value="Modify" /></dd>
+								</dt>
+							</dl>
+						</form>
+					</div>
+
+					<div>
+						<b>Delete Category:</b>
+						<div>
+							<select id="delCat" onkeypress="handle(event, 2)"></select><input id="delCatBut" type="button" name="delCatBut" value="Delete" />
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<br />
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<div class=flashes>
+			{% for message in messages %}
+				<p style="margin: 30px;">{{ message }}</p>
+			{% endfor %}
+				</div>
+  			{% endif %}
+		{% endwith %}
+
+		<script type="text/javascript" src="/static/script.js"></script>
+	</body>
+</html>

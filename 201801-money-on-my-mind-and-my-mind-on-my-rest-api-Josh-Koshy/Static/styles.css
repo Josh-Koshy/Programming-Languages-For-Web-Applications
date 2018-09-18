@@ -1,0 +1,74 @@
+html, body {
+	width: 100%;
+}
+h1, h2, h3 {
+	margin: 10px;
+    text-align: center;
+}
+div {
+	padding: 0% 5% 0% 5%;
+}
+ul {
+	margin: auto;
+	display: table;
+}
+li {
+	margin: 0px 0px 0px -70px;
+}
+table {
+	width: 90%;
+    margin: auto;
+    border: 1px solid black;
+}
+th, td {
+	border: 1px solid black;
+}
+.catCol {
+    width: 30%;
+	padding: 0% 2% 0% 2%;
+	vertical-align: top;
+}
+.budCol {
+	width: 70%;
+	padding: 2%;
+	vertical-align: top;
+}
+.dAmount {
+	margin: -19px 20px 0px 320px;
+}
+.dDate {
+	margin: -19px 20px 0px 320px;
+}
+#modPur {
+	width: 175px;
+}
+#modCat {
+	width: 130px;
+}
+#delCat {
+	width: 130px;
+}
+#descPur {
+	width: 175px;
+}
+#purDisp {
+	text-align: center;
+}
+#selectDate {
+	margin: 0px 26% 0px 26%;
+}
+#newBud {
+	width: 60px;
+}
+#modBud {
+	width: 60px;
+}
+#amountPur {
+	width: 60px;
+}
+#modAmnt {
+	width: 60px;
+}
+#dCatBut {
+	margin: -19px 20px 0px 170px;
+}

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - {{ super() }}{% endblock %}
+{% block content %}
+	<h1>Dashboard</h1>
+
+	{% set flag={'value':False} %}
+	{% set flag2={'value':True} %}
+
+	{% if level == '1' %}
+		<div style="margin: 0px 0px 0px 30px;">
+		<h2>Events</h2>
+		{% for event in events %}
+
+			<span>
+				<h3><b>Event on {{ event.event_date }} for the client {{ event.client.name }}</b></h3>
+				<b>Employees working event</b>
+				<ul>
+				{% for job in event.job %}
+					{% if job.job_date == event.event_date %}
+						{% for user in users %}
+							{% if job.job_worker == user.user_id %}
+								<li style="margin: 0px 0px 0px 0px;">{{ user.name }}</li>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+				{% else %}
+					<li>No employees have signed up.</li>
+				{% endfor %}
+				</ul>
+			</span>
+
+		{% else %}
+			No scheduled events.
+		{% endfor %}
+		</div>
+	{% endif %}
+
+	{% if level == '2' %}
+		<ul>
+			<h2><b>Your Events</b></h2>
+			{% for event in events %}
+
+				<span>
+					<ul>
+					{% if flag.update({'value':False}) %}
+					{% endif %}
+					{% for job in event.job %}
+						{% if job.job_worker == user_id %}
+							{% if flag.update({'value':True}) %}
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+					{% if flag['value'] %}
+						<h3><b>Working event on {{ event.event_date }} for {{ event.client.name }}</b></h3>
+						{% if flag2.update({'value':False}) %}
+						{% endif %}
+					{% endif %}
+					</ul>
+				</span>
+				
+			{% endfor %}
+			{% if flag2['value'] %} 
+				No scheduled events.
+			{% endif %}
+		
+			{% if flag2.update({'value':True}) %}
+			{% endif %}
+
+			<h2><b>Open Events</b></h2>
+			{% if error %}
+				<div class="error">{{ error }}</div> <br />
+			{% endif %}
+			{% for event in events %}
+				{% if flag.update({'value':True}) %}
+				{% endif %}
+				<span>
+					<ul>
+					{% for job in event.job %}
+						{% if job.job_worker == user_id %}
+							{% if flag.update({'value':False}) %}
+							{% endif %}
+						{% endif %}
+						{% if loop.index >= 3 %}
+							{% if flag.update({'value':False}) %}
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+					{% if flag['value'] %}
+						<h3><b>Event on {{ event.event_date }} for {{ event.client.name }}</b></h3>
+						<form action="" method="post" style="margin: -20px 0px -10px 20px;">
+							<button name="event" type="submit" value="{{ event.event_date }}" style="font-size: 13px;">Schedule</button>
+						</form>
+						{% if flag2.update({'value':False}) %}
+						{% endif %}
+					{% endif %}
+					</ul>
+				</span>
+			{% endfor %}
+			{% if flag2['value'] %} 
+				No available events.
+			{% endif %}
+		</ul>
+	{% endif %}
+{% endblock %}
+
+

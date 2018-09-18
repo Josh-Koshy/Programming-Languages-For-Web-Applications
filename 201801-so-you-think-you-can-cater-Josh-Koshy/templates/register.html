@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Register - {{ super() }}{% endblock %}
+{% block content %}
+	<h2>Register</h2>
+
+	{% if error %}<div class="error"><strong>Error:</strong> {{ error }}</div>
+	{% endif %}
+
+	<form action="" method="post">
+		<dl>
+			<dt>Username: <input type="text" name="username" size="45" value="{{ request.form.username }}">
+			</dt>
+			<dt>Name: <input type="text" name="name" size="49" value="{{ request.form.name }}">
+			</dt>
+			<dt>Password: <input type="password" name="password" size="45">
+			</dt>
+			<dt>Password <small>(repeat)</small>: <input type="password" name="password_check" size="37">
+			</dt>
+		</dl>
+		<div><input type="submit" value="Register"></div>
+	</form>
+	
+{% endblock %}

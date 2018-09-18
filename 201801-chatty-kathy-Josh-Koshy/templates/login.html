@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Login - {{ super() }}{% endblock %}
+{% block content %}
+    <h2>Please Log in to Continue:</h2>
+
+    {% if error %}<div class="error">Error: {{ error }}</div>{% endif %}
+   
+    <form action="" method="post">
+        <dl>
+            <dt>
+                <dd>Username: <input type="text" name="username" /></dd>
+            </dt>
+            <dt>
+                <dd>Password: <input type="password" name="password" /></dd>
+            </dt>
+        </dl>
+        <div><input type="submit" value="Log In" ></div>
+    </form>
+    <form action="/register">
+        <input type="submit" value="Register" />
+    </form>
+    <br />
+
+{% endblock %}

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/table.css"> 
+    <title>Battleship!</title>
+    <script type="text/javascript" src = battleship.js>
+    </script>
+    
+</head>
+
+<body>
+<h1 class="header1">Battleship</h1>
+<h2 class="header2">by Josh Koshy</h2>
+<h3 id="status"></h3>
+<h4 id="status2"></h4>
+
+<form id="userForm" onsubmit="event.preventDefault(); checkStrings(0);">
+        Name:  <input type="text" id="nameInput" width="350"><br>
+        Ship Placements:  <input type="text" id="shipInput" width="350"><br><br>
+        <input type="submit" id="inputButton" value="Submit">
+</form>
+
+<script>
+    selectionPrompt(0);
+</script>
+
+<br>
+<div class="table1"></div>
+<br>
+<div class="table2"></div>
+<br>
+<div class="table3"></div>
+
+
+
+
+
+<!--<script type="text/javascript">
+    var allFoos = document.querySelectorAll(".foo");
+
+    var letters = ['-','A','B','C','D','E','F','G','H','I','J'];
+    var parent = document.querySelector(".parent");
+    if (parent.hasChildNodes()){
+        var children = parent.childNodes;
+        for (var i = 0; i < children.length; i++) {
+            parent.removeChild(children[i]);
+        }
+    }
+    var table  = document.createElement('table');
+    table.setAttribute('id', 'table')
+    parent.appendChild(table);
+    for (var i = 1; i < 11 ; i++) {
+        var row = document.createElement('tr');
+        for (var j = 1; j < 11; j++ ) {
+            var cell = document.createElement('td');
+            cell.innerHTML = letters[i] + j;
+            if (j % 2 === 0){
+                cell.setAttribute('style', 'cursor:pointer; background-color:#c2c2c2;');
+            } else {
+                cell.setAttribute('style', 'cursor:pointer;');
+            }
+            cell.addEventListener('click', function(e) {
+                alert('You clicked: ' + e.currentTarget.innerHTML);
+            })
+            row.appendChild(cell);
+        }
+        document.querySelector("#table").appendChild(row);
+    }
+</script>-->
+</body>
+</html>
